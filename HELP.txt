@@ -1,0 +1,116 @@
+# HELP prometheus_agent_active_series Number of active series being tracked by the WAL storage
+# HELP prometheus_agent_checkpoint_creations_failed_total Total number of checkpoint creations that failed.
+# HELP prometheus_agent_checkpoint_creations_total Total number of checkpoint creations attempted.
+# HELP prometheus_agent_checkpoint_deletions_failed_total Total number of checkpoint deletions that failed.
+# HELP prometheus_agent_checkpoint_deletions_total Total number of checkpoint deletions attempted.
+# HELP prometheus_agent_clean_start -1: lockfile is disabled. 0: a lockfile from a previous execution was replaced. 1: lockfile creation was clean
+# HELP prometheus_agent_corruptions_total Total number of WAL corruptions.
+# HELP prometheus_agent_data_replay_duration_seconds Time taken to replay the data on disk.
+# HELP prometheus_agent_deleted_series Number of series pending deletion from the WAL
+# HELP prometheus_agent_exemplars_appended_total Total number of exemplars appended to the storage
+# HELP prometheus_agent_out_of_order_samples_total Total number of out of order samples ingestion failed attempts.
+# HELP prometheus_agent_samples_appended_total Total number of samples appended to the storage
+# HELP prometheus_agent_truncate_duration_seconds Duration of WAL truncation.
+# HELP prometheus_api_remote_read_queries The current number of remote read queries being executed or waiting.
+# HELP prometheus_build_info A metric with a constant '1' value labeled by version, revision, branch, and goversion from which prometheus was built.
+# HELP prometheus_config_last_reload_success_timestamp_seconds Timestamp of the last successful configuration reload.
+# HELP prometheus_config_last_reload_successful Whether the last configuration reload attempt was successful.
+# HELP prometheus_http_request_duration_seconds Histogram of latencies for HTTP requests.
+# HELP prometheus_http_requests_total Counter of HTTP requests.
+# HELP prometheus_http_response_size_bytes Histogram of response size for HTTP requests.
+# HELP prometheus_notifications_alertmanagers_discovered The number of alertmanagers discovered and active.
+# HELP prometheus_notifications_dropped_total Total number of alerts dropped due to errors when sending to Alertmanager.
+# HELP prometheus_notifications_queue_capacity The capacity of the alert notifications queue.
+# HELP prometheus_notifications_queue_length The number of alert notifications in the queue.
+# HELP prometheus_ready Whether Prometheus startup was fully completed and the server is ready for normal operation.
+# HELP prometheus_remote_storage_bytes_total The total number of bytes of data (not metadata) sent by the queue after compression. Note that when exemplars over remote write is enabled the exemplars included in a remote write request count towards this metric.
+# HELP prometheus_remote_storage_enqueue_retries_total Total number of times enqueue has failed because a shards queue was full.
+# HELP prometheus_remote_storage_exemplars_dropped_total Total number of exemplars which were dropped after being read from the WAL before being sent via remote write, either via relabelling or unintentionally because of an unknown reference ID.
+# HELP prometheus_remote_storage_exemplars_failed_total Total number of exemplars which failed on send to remote storage, non-recoverable errors.
+# HELP prometheus_remote_storage_exemplars_in_total Exemplars in to remote storage, compare to exemplars out for queue managers.
+# HELP prometheus_remote_storage_exemplars_pending The number of exemplars pending in the queues shards to be sent to the remote storage.
+# HELP prometheus_remote_storage_exemplars_retried_total Total number of exemplars which failed on send to remote storage but were retried because the send error was recoverable.
+# HELP prometheus_remote_storage_exemplars_total Total number of exemplars sent to remote storage.
+# HELP prometheus_remote_storage_highest_timestamp_in_seconds Highest timestamp that has come into the remote storage via the Appender interface, in seconds since epoch.
+# HELP prometheus_remote_storage_max_samples_per_send The maximum number of samples to be sent, in a single request, to the remote storage. Note that, when sending of exemplars over remote write is enabled, exemplars count towards this limt.
+# HELP prometheus_remote_storage_metadata_bytes_total The total number of bytes of metadata sent by the queue after compression.
+# HELP prometheus_remote_storage_metadata_failed_total Total number of metadata entries which failed on send to remote storage, non-recoverable errors.
+# HELP prometheus_remote_storage_metadata_retried_total Total number of metadata entries which failed on send to remote storage but were retried because the send error was recoverable.
+# HELP prometheus_remote_storage_metadata_total Total number of metadata entries sent to remote storage.
+# HELP prometheus_remote_storage_queue_highest_sent_timestamp_seconds Timestamp from a WAL sample, the highest timestamp successfully sent by this queue, in seconds since epoch.
+# HELP prometheus_remote_storage_samples_dropped_total Total number of samples which were dropped after being read from the WAL before being sent via remote write, either via relabelling or unintentionally because of an unknown reference ID.
+# HELP prometheus_remote_storage_samples_failed_total Total number of samples which failed on send to remote storage, non-recoverable errors.
+# HELP prometheus_remote_storage_samples_in_total Samples in to remote storage, compare to samples out for queue managers.
+# HELP prometheus_remote_storage_samples_pending The number of samples pending in the queues shards to be sent to the remote storage.
+# HELP prometheus_remote_storage_samples_retried_total Total number of samples which failed on send to remote storage but were retried because the send error was recoverable.
+# HELP prometheus_remote_storage_samples_total Total number of samples sent to remote storage.
+# HELP prometheus_remote_storage_sent_batch_duration_seconds Duration of send calls to the remote storage.
+# HELP prometheus_remote_storage_shard_capacity The capacity of each shard of the queue used for parallel sending to the remote storage.
+# HELP prometheus_remote_storage_shards The number of shards used for parallel sending to the remote storage.
+# HELP prometheus_remote_storage_shards_desired The number of shards that the queues shard calculation wants to run based on the rate of samples in vs. samples out.
+# HELP prometheus_remote_storage_shards_max The maximum number of shards that the queue is allowed to run.
+# HELP prometheus_remote_storage_shards_min The minimum number of shards that the queue is allowed to run.
+# HELP prometheus_remote_storage_string_interner_zero_reference_releases_total The number of times release has been called for strings that are not interned.
+# HELP prometheus_sd_azure_failures_total Number of Azure service discovery refresh failures.
+# HELP prometheus_sd_consul_rpc_duration_seconds The duration of a Consul RPC call in seconds.
+# HELP prometheus_sd_consul_rpc_failures_total The number of Consul RPC call failures.
+# HELP prometheus_sd_discovered_targets Current number of discovered targets.
+# HELP prometheus_sd_dns_lookup_failures_total The number of DNS-SD lookup failures.
+# HELP prometheus_sd_dns_lookups_total The number of DNS-SD lookups.
+# HELP prometheus_sd_failed_configs Current number of service discovery configurations that failed to load.
+# HELP prometheus_sd_file_read_errors_total The number of File-SD read errors.
+# HELP prometheus_sd_file_scan_duration_seconds The duration of the File-SD scan in seconds.
+# HELP prometheus_sd_http_failures_total Number of HTTP service discovery refresh failures.
+# HELP prometheus_sd_kubernetes_events_total The number of Kubernetes events handled.
+# HELP prometheus_sd_kubernetes_http_request_duration_seconds Summary of latencies for HTTP requests to the Kubernetes API by endpoint.
+# HELP prometheus_sd_kubernetes_http_request_total Total number of HTTP requests to the Kubernetes API by status code.
+# HELP prometheus_sd_kubernetes_workqueue_depth Current depth of the work queue.
+# HELP prometheus_sd_kubernetes_workqueue_items_total Total number of items added to the work queue.
+# HELP prometheus_sd_kubernetes_workqueue_latency_seconds How long an item stays in the work queue.
+# HELP prometheus_sd_kubernetes_workqueue_longest_running_processor_seconds Duration of the longest running processor in the work queue.
+# HELP prometheus_sd_kubernetes_workqueue_unfinished_work_seconds How long an item has remained unfinished in the work queue.
+# HELP prometheus_sd_kubernetes_workqueue_work_duration_seconds How long processing an item from the work queue takes.
+# HELP prometheus_sd_kuma_fetch_duration_seconds The duration of a Kuma MADS fetch call.
+# HELP prometheus_sd_kuma_fetch_failures_total The number of Kuma MADS fetch call failures.
+# HELP prometheus_sd_kuma_fetch_skipped_updates_total The number of Kuma MADS fetch calls that result in no updates to the targets.
+# HELP prometheus_sd_linode_failures_total Number of Linode service discovery refresh failures.
+# HELP prometheus_sd_nomad_failures_total Number of nomad service discovery refresh failures.
+# HELP prometheus_sd_received_updates_total Total number of update events received from the SD providers.
+# HELP prometheus_sd_updates_total Total number of update events sent to the SD consumers.
+# HELP prometheus_target_interval_length_seconds Actual intervals between scrapes.
+# HELP prometheus_target_metadata_cache_bytes The number of bytes that are currently used for storing metric metadata in the cache
+# HELP prometheus_target_metadata_cache_entries Total number of metric metadata entries in the cache
+# HELP prometheus_target_scrape_pool_exceeded_label_limits_total Total number of times scrape pools hit the label limits, during sync or config reload.
+# HELP prometheus_target_scrape_pool_exceeded_target_limit_total Total number of times scrape pools hit the target limit, during sync or config reload.
+# HELP prometheus_target_scrape_pool_reloads_failed_total Total number of failed scrape pool reloads.
+# HELP prometheus_target_scrape_pool_reloads_total Total number of scrape pool reloads.
+# HELP prometheus_target_scrape_pool_sync_total Total number of syncs that were executed on a scrape pool.
+# HELP prometheus_target_scrape_pool_targets Current number of targets in this scrape pool.
+# HELP prometheus_target_scrape_pools_failed_total Total number of scrape pool creations that failed.
+# HELP prometheus_target_scrape_pools_total Total number of scrape pool creation attempts.
+# HELP prometheus_target_scrapes_cache_flush_forced_total How many times a scrape cache was flushed due to getting big while scrapes are failing.
+# HELP prometheus_target_scrapes_exceeded_body_size_limit_total Total number of scrapes that hit the body size limit
+# HELP prometheus_target_scrapes_exceeded_sample_limit_total Total number of scrapes that hit the sample limit and were rejected.
+# HELP prometheus_target_scrapes_exemplar_out_of_order_total Total number of exemplar rejected due to not being out of the expected order.
+# HELP prometheus_target_scrapes_sample_duplicate_timestamp_total Total number of samples rejected due to duplicate timestamps but different values.
+# HELP prometheus_target_scrapes_sample_out_of_bounds_total Total number of samples rejected due to timestamp falling outside of the time bounds.
+# HELP prometheus_target_scrapes_sample_out_of_order_total Total number of samples rejected due to not being out of the expected order.
+# HELP prometheus_target_sync_failed_total Total number of target sync failures.
+# HELP prometheus_target_sync_length_seconds Actual interval to sync the scrape pool.
+# HELP prometheus_template_text_expansion_failures_total The total number of template text expansion failures.
+# HELP prometheus_template_text_expansions_total The total number of template text expansions.
+# HELP prometheus_treecache_watcher_goroutines The current number of watcher goroutines.
+# HELP prometheus_treecache_zookeeper_failures_total The total number of ZooKeeper failures.
+# HELP prometheus_tsdb_wal_completed_pages_total Total number of completed pages.
+# HELP prometheus_tsdb_wal_fsync_duration_seconds Duration of WAL fsync.
+# HELP prometheus_tsdb_wal_page_flushes_total Total number of page flushes.
+# HELP prometheus_tsdb_wal_segment_current WAL segment index that TSDB is currently writing to.
+# HELP prometheus_tsdb_wal_truncations_failed_total Total number of WAL truncations that failed.
+# HELP prometheus_tsdb_wal_truncations_total Total number of WAL truncations attempted.
+# HELP prometheus_tsdb_wal_writes_failed_total Total number of WAL writes that failed.
+# HELP prometheus_wal_watcher_current_segment Current segment the WAL watcher is reading records from.
+# HELP prometheus_wal_watcher_record_decode_failures_total Number of records read by the WAL watcher that resulted in an error when decoding.
+# HELP prometheus_wal_watcher_records_read_total Number of records read by the WAL watcher from the WAL.
+# HELP prometheus_wal_watcher_samples_sent_pre_tailing_total Number of sample records read by the WAL watcher and sent to remote write during replay of existing WAL.
+# HELP prometheus_web_federation_errors_total Total number of errors that occurred while sending federation responses.
+# HELP prometheus_web_federation_warnings_total Total number of warnings that occurred while sending federation responses.
