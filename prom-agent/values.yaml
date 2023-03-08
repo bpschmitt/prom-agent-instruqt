@@ -142,7 +142,7 @@ config:
     # -- Includes additional [relabel configs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config)
     # for the New Relic remote write.
     # @default -- `[]`f
-    extra_write_relabel_configs:
+    extra_write_relabel_configs: []
       # INSTRUQT - drop expensive histograms
       # - source_labels: [__name__]
       #   regex: (fluentbit|nginx|coredns)_.*bucket
