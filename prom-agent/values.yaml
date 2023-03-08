@@ -144,31 +144,31 @@ config:
     # @default -- `[]`f
     extra_write_relabel_configs:
       # INSTRUQT - drop expensive histograms
-      - source_labels: [__name__]
-        regex: (fluentbit|nginx|coredns)_.*bucket
-        action: drop
-      # Backwards compatibility with legacy POMI attributes
-      - source_labels: [namespace]
-        action: replace
-        target_label: namespaceName
-      - source_labels: [node]
-        action: replace
-        target_label: nodeName
-      - source_labels: [pod]
-        action: replace
-        target_label: podName
-      - source_labels: [service]
-        action: replace
-        target_label: serviceName
-      - source_labels: [cluster_name]
-        action: replace
-        target_label: clusterName
-      - source_labels: [job]
-        action: replace
-        target_label: scrapedTargetKind
-      - source_labels: [instance]
-        action: replace
-        target_label: scrapedTargetInstance
+      # - source_labels: [__name__]
+      #   regex: (fluentbit|nginx|coredns)_.*bucket
+      #   action: drop
+      # # Backwards compatibility with legacy POMI attributes
+      # - source_labels: [namespace]
+      #   action: replace
+      #   target_label: namespaceName
+      # - source_labels: [node]
+      #   action: replace
+      #   target_label: nodeName
+      # - source_labels: [pod]
+      #   action: replace
+      #   target_label: podName
+      # - source_labels: [service]
+      #   action: replace
+      #   target_label: serviceName
+      # - source_labels: [cluster_name]
+      #   action: replace
+      #   target_label: clusterName
+      # - source_labels: [job]
+      #   action: replace
+      #   target_label: scrapedTargetKind
+      # - source_labels: [instance]
+      #   action: replace
+      #   target_label: scrapedTargetInstance
 
 
     # -- Set up the proxy used to send metrics to New Relic.
