@@ -15,7 +15,12 @@ read value
 
 export NEW_RELIC_USER_KEY=$value
 
-echo "Environment variables have been set!"
+echo ""
+echo "Environment variables have been set! Let's roll..."
+echo "--------------------------------------------------"
+echo "Installing New Relic components into your cluster..."
+echo ""
+
 
 kubectl create ns newrelic
 kubectl create secret generic newrelic-license-key --from-literal=license-key=$NEW_RELIC_LICENSE_KEY -n newrelic
