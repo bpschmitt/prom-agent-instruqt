@@ -386,6 +386,15 @@ config:
     # self-metrics you need to include a job like the one defined by default.
     # @default -- See `values.yaml`.
     jobs:
+    # INSTRUQT: Challenge 5
+    # Description: scrape the node exporter static endpoint
+    # - job_name: instruqt-node-exporter
+    #   targets:
+    #     - "INSTRUQT_HOSTNAME:9100"
+    #   basic_auth:
+    #     username: prometheus
+    #     password: PASSWORD
+
     - job_name: self-metrics
       skip_sharding: true  # sharding is skipped to obtain self-metrics from all Prometheus servers.
       targets:
