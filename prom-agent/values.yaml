@@ -224,6 +224,8 @@ config:
       #    one of the values of app_values are scraped. Each job configuration can override this default.
       enabled: true
       # -- source_labels used to fetch label values in the relabel config added by the integration filters configuration
+      # INSTRUQT: Challenge 1
+      # Description: testing 1 2 3
       source_labels: ["app.kubernetes.io/name", "app.newrelic.io/name", "k8s-app"]
       # -- app_values used to create the regex used in the relabel config added by the integration filters configuration.
       # Note that a single regex will be created from this list, example: '.*(?i)(app1|app2|app3).*'
@@ -249,6 +251,13 @@ config:
         filter:
           annotations:
             prometheus.io/scrape: true
+      # INSTRUQT: Challenge 4
+      # Description: testing 1 2 3
+      # extra_metric_relabel_config:
+      #   - source_labels: [__name__, le]
+      #     separator: ;
+      #     regex: coredns_forward_request_duration_seconds_bucket;(0.([0-2]).*)
+      #     action: drop
 
       # -- integrations_filter configuration for this specific job. It overrides kubernetes.integrations_filter configuration
       # integrations_filter:
@@ -256,39 +265,16 @@ config:
       # 'newrelic' scrapes all targets having 'newrelic.io/scrape: true'.
       # This is useful to extend the targets scraped by the 'default' job allowlisting services leveraging `newrelic.io/scrape` annotation
     - job_name_prefix: newrelic
-      # scrape_interval: 60s
       integrations_filter:
         enabled: false
       target_discovery:
         pod: true
         endpoints: true
+        # INSTRUQT: Challenge 3
+        # Description: testing 1 2 3
         filter:
           annotations:
             newrelic.io/scrape: true
-      # extra_metric_relabel_config:
-      #   - source_labels: [pod]
-      #     action: replace
-      #     regex: (.*)
-      #     target_label: test
-      #     replacement: "${1}"
-
-          #replacement: test
-
-      # extra_relabel_config:
-      #   - regex: controller_revision_hash
-      #     action: labeldrop
-        #
-        #
-        # - source_labels: [controller_revision_hash]
-        #   action: drop
-        #   regex: fluentbit.*
-        # - source_labels: [__meta_kubernetes_pod_ip]
-        #   action: replace
-        #   target_label: test_two
-        # - source_labels: [__meta_kubernetes_pod_name]
-        #   action: replace
-        #   target_label: test_four
-
 
 
     # -- Set up the job name prefix. The final Prometheus `job` name will be composed of <job_name_prefix> + the target discovery kind. ie: `default-pod`
