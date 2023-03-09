@@ -30,4 +30,4 @@ curl -s -X POST https://k8s-config-generator.service.newrelic.com/generate -H 'C
 kubectl apply -f ../newrelic/newrelic.yaml -n newrelic
 helm repo add newrelic-prometheus https://newrelic.github.io/newrelic-prometheus-configurator
 helm upgrade --install prometheus-agent newrelic-prometheus/newrelic-prometheus-agent -f ../prom-agent/values.yaml -n newrelic
-# cat dashboard.txt | sed 's/REPLACE_ACCOUNT_ID/'$NEW_RELIC_ACCOUNT_ID'/g' | curl -H 'Content-Type: application/json' -H "API-Key: $NEW_RELIC_USER_KEY" -d @- https://api.newrelic.com/graphql
+cat dashboard.txt | sed 's/REPLACE_ACCOUNT_ID/'$NEW_RELIC_ACCOUNT_ID'/g' | curl -H 'Content-Type: application/json' -H "API-Key: $NEW_RELIC_USER_KEY" -d @- https://api.newrelic.com/graphql
