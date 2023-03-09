@@ -246,6 +246,7 @@ config:
     #   the default 9102 for pods.
     # - `prometheus.io/param_<param-name>`: To include additional parameters in the scrape URL.
     jobs:
+    # INSTRUQT: Challenge 2
     # 'default' scrapes all targets having 'prometheus.io/scrape: true'.
     # Out of the box, since kubernetes.integrations_filter.enabled=true then only targets selected by the integration filters are considered.
     - job_name_prefix: default
@@ -256,6 +257,9 @@ config:
           annotations:
             prometheus.io/scrape: true
 
+       # -- integrations_filter configuration for this specific job. It overrides kubernetes.integrations_filter configuration
+      # integrations_filter:
+
       # INSTRUQT: Challenge 4
       # Description: testing 1 2 3
       # extra_metric_relabel_config:
@@ -264,11 +268,7 @@ config:
       #     regex: coredns_forward_request_duration_seconds_bucket;(0.([0-2]).*)
       #     action: drop
 
-      # -- integrations_filter configuration for this specific job. It overrides kubernetes.integrations_filter configuration
-      # integrations_filter:
-
     # INSTRUQT: Challenge 3
-    # Description: testing 1 2 3
     # 'newrelic' scrapes all targets having 'newrelic.io/scrape: true'.
     # This is useful to extend the targets scraped by the 'default' job allowlisting services leveraging `newrelic.io/scrape` annotation
     - job_name_prefix: newrelic
@@ -387,7 +387,6 @@ config:
     # @default -- See `values.yaml`.
     jobs:
     # INSTRUQT: Challenge 5
-    # Description: scrape the node exporter static endpoint
     # - job_name: instruqt-node-exporter
     #   targets:
     #     - "INSTRUQT_HOSTNAME:9100"
