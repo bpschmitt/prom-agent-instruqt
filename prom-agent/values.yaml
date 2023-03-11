@@ -141,13 +141,8 @@ config:
   newrelic_remote_write:
     # -- Includes additional [relabel configs](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config)
     # for the New Relic remote write.
-    # @default -- `[]`f
+    # @default -- `[]`
     extra_write_relabel_configs:
-      # INSTRUQT: Challenge 4
-      # Description: drop process.* metrics
-      # - source_labels: [__name__]
-      #   regex: process.*
-      #   action: drop
 
       # Enable the extra_write_relabel_configs below for backwards compatibility with legacy POMI labels.
       # This helpful when migrating from POMI to ensure that Prometheus metrics will contain both labels (e.g. cluster_name and clusterName).
@@ -257,11 +252,8 @@ config:
           annotations:
             prometheus.io/scrape: true
 
-       # -- integrations_filter configuration for this specific job. It overrides kubernetes.integrations_filter configuration
-      # integrations_filter:
-
-      # INSTRUQT: Challenge 4
-      # Description: testing 1 2 3
+      # # INSTRUQT: Challenge 4
+      # # Description: testing 1 2 3
       # extra_metric_relabel_config:
       #   - source_labels: [__name__, le]
       #     separator: ;
@@ -272,6 +264,7 @@ config:
     # 'newrelic' scrapes all targets having 'newrelic.io/scrape: true'.
     # This is useful to extend the targets scraped by the 'default' job allowlisting services leveraging `newrelic.io/scrape` annotation
     - job_name_prefix: newrelic
+      # -- integrations_filter configuration for this specific job. It overrides kubernetes.integrations_filter configuration
       integrations_filter:
         enabled: false
       target_discovery:
@@ -386,13 +379,23 @@ config:
     # self-metrics you need to include a job like the one defined by default.
     # @default -- See `values.yaml`.
     jobs:
-    # INSTRUQT: Challenge 5
+    # # INSTRUQT: Challenge 4
     # - job_name: instruqt-node-exporter
     #   targets:
     #     - "INSTRUQT_HOSTNAME:9100"
     #   basic_auth:
     #     username: prometheus
     #     password: PASSWORD
+    # # INSTRUQT: Challenge 5
+    #   extra_metric_relabel_config:
+    #     # Drop all metrics in the node_sockstat and node_timex metric groups
+    #     - source_labels: [__name__]
+    #       regex: node_(sockstat|timex).*
+    #       action: drop
+    #     # Drop all devices except ens4 and cni0 for all node_network metrics
+    #     - source_labels: [__name__, device]
+    #       regex: node_network.*;(ens4|cni0)
+    #       action: keep
 
     - job_name: self-metrics
       skip_sharding: true  # sharding is skipped to obtain self-metrics from all Prometheus servers.
