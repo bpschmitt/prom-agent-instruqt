@@ -9,12 +9,6 @@ config:
     scrape_interval: 30s
   newrelic_remote_write:
     extra_write_relabel_configs:
-      # INSTRUQT: Challenge 4
-      # Description: drop process.* metrics
-      # - source_labels: [__name__]
-      #   regex: process.*
-      #   action: drop
-
       # Enable the extra_write_relabel_configs below for backwards compatibility with legacy POMI labels.
       # This helpful when migrating from POMI to ensure that Prometheus metrics will contain both labels (e.g. cluster_name and clusterName).
       # For more migration info, please visit the [migration guide](https://docs.newrelic.com/docs/infrastructure/prometheus-integrations/install-configure-prometheus-agent/migration-guide/).
@@ -43,10 +37,8 @@ config:
   kubernetes:
     integrations_filter:
       enabled: true
+      # INSTRUQT: Challenge 2
       # -- source_labels used to fetch label values in the relabel config added by the integration filters configuration
-      # INSTRUQT: Challenge 1
-      # Description: testing 1 2 3
-      #
       source_labels: ["app.kubernetes.io/name", "app.newrelic.io/name", "k8s-app"]
       # -- app_values used to create the regex used in the relabel config added by the integration filters configuration.
       # Note that a single regex will be created from this list, example: '.*(?i)(app1|app2|app3).*'
@@ -132,5 +124,3 @@ config:
             process_virtual_memory_bytes|\
             process_cpu_seconds_total"
           action: keep
-
-  extra_scrape_configs: []
