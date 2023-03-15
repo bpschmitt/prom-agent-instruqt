@@ -17,7 +17,9 @@ export NEW_RELIC_USER_KEY=$value
 
 echo ""
 echo "Environment variables have been set! Let's roll..."
+echo ""
 echo "--------------------------------------------------"
+echo ""
 echo "Installing New Relic components into your cluster..."
 echo ""
 
@@ -37,8 +39,10 @@ helm upgrade --install prometheus-agent newrelic-prometheus/newrelic-prometheus-
 cat dashboard.txt | sed 's/REPLACE_ACCOUNT_ID/'$NEW_RELIC_ACCOUNT_ID'/g' | curl -H 'Content-Type: application/json' -H "API-Key: $NEW_RELIC_USER_KEY" -d @- https://api.newrelic.com/graphql > /dev/null 2>&1
 
 if [ $? -ne 0 ]; then
+    echo ""
     echo "Error creating dashboard!"
 else
+    echo ""
     echo "Lab dashboard installed successfully!"
 fi
 
