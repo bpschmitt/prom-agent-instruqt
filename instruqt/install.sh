@@ -33,7 +33,7 @@ kubectl apply -f ../newrelic/newrelic.yaml -n newrelic
 
 ## Install the Prometheus Agent using Helm
 helm repo add newrelic-prometheus https://newrelic.github.io/newrelic-prometheus-configurator
-helm upgrade --install prometheus-agent newrelic-prometheus/newrelic-prometheus-agent -f ../prom-agent/values.yaml -n newrelic
+helm upgrade --install prometheus-agent newrelic-prometheus/newrelic-prometheus-agent -f ../prom-agent/values-simple.yaml -n newrelic
 
 ## Deploy the lab dashboard
 cat dashboard.txt | sed 's/REPLACE_ACCOUNT_ID/'$NEW_RELIC_ACCOUNT_ID'/g' | curl -H 'Content-Type: application/json' -H "API-Key: $NEW_RELIC_USER_KEY" -d @- https://api.newrelic.com/graphql > /dev/null 2>&1
