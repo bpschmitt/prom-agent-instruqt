@@ -81,13 +81,23 @@ config:
 
   static_targets:
     jobs:
-    # INSTRUQT: Challenge 5
+    # # INSTRUQT: Challenge 5
     # - job_name: instruqt-node-exporter
     #   targets:
     #     - "INSTRUQT_HOSTNAME:9100"
     #   basic_auth:
     #     username: prometheus
     #     password: PASSWORD
+    # # INSTRUQT: Challenge 5
+    #   extra_metric_relabel_config:
+    #     # Drop all metrics in the node_sockstat and node_timex metric groups
+    #     - source_labels: [__name__]
+    #       regex: node_(sockstat|timex).*
+    #       action: drop
+    #     # Drop all devices except ens4 and cni0 for all node_network metrics
+    #     - source_labels: [__name__, device]
+    #       regex: node_network.*;(ens4|cni0)
+    #       action: keep
 
     - job_name: self-metrics
       skip_sharding: true  # sharding is skipped to obtain self-metrics from all Prometheus servers.
