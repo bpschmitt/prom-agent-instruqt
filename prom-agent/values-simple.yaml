@@ -66,14 +66,6 @@ config:
           annotations:
             prometheus.io/scrape: true
 
-      # INSTRUQT: Challenge 4
-      # Description: testing 1 2 3
-      # extra_metric_relabel_config:
-      #   - source_labels: [__name__, le]
-      #     separator: ;
-      #     regex: coredns_forward_request_duration_seconds_bucket;(0.([0-2]).*)
-      #     action: drop
-
     # INSTRUQT: Challenge 3
     # 'newrelic' scrapes all targets having 'newrelic.io/scrape: true'.
     # This is useful to extend the targets scraped by the 'default' job allowlisting services leveraging `newrelic.io/scrape` annotation
