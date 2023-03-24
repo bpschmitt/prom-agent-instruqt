@@ -30,8 +30,8 @@ kubectl create secret generic newrelic-license-key --from-literal=license-key=$N
 function ver { printf "%03d%03d" $(echo "$1" | tr '.' ' '); } && \
 K8S_VERSION=$(kubectl version --short 2>&1 | grep 'Server Version' | awk -F' v' '{ print $2; }' | awk -F. '{ print $1"."$2; }') && \
 if [[ $(ver $K8S_VERSION) -lt $(ver "1.25") ]]; then KSM_IMAGE_VERSION="v2.6.0"; else KSM_IMAGE_VERSION="v2.7.0"; fi && \
-helm repo add newrelic https://helm-charts.newrelic.com && helm repo update && \
-kubectl create namespace newrelic ; helm upgrade --install newrelic-bundle newrelic/nri-bundle \
+helm repo add newrelic https://helm-charts.newrelic.com && helm repo update newrelic && \
+helm upgrade --install newrelic-bundle newrelic/nri-bundle \
  --set global.customSecretName=newrelic-license-key \
  --set global.customSecretLicenseKey=license-key \
  --set global.cluster=instruqt-cluster \
@@ -49,7 +49,7 @@ kubectl create namespace newrelic ; helm upgrade --install newrelic-bundle newre
 # kubectl apply -f ../newrelic/newrelic.yaml -n newrelic
 
 ## Install the Prometheus Agent using Helm
-helm repo add newrelic-prometheus https://newrelic.github.io/newrelic-prometheus-configurator
+helm repo add newrelic-prometheus https://newrelic.github.io/newrelic-prometheus-configurator && helm repo update newrelic-prometheus
 helm upgrade --install prometheus-agent newrelic-prometheus/newrelic-prometheus-agent -f ../prom-agent/values-simple.yaml -n newrelic
 
 ## Deploy the lab dashboard
