@@ -33,7 +33,7 @@ if [[ $(ver $K8S_VERSION) -lt $(ver "1.25") ]]; then KSM_IMAGE_VERSION="v2.6.0";
 helm repo add newrelic https://helm-charts.newrelic.com && helm repo update && \
 kubectl create namespace newrelic ; helm upgrade --install newrelic-bundle newrelic/nri-bundle \
  --set global.customSecretName=newrelic-license-key \
- --set global.customLicenseKey=license-key \
+ --set global.customSecretLicenseKey=license-key \
  --set global.cluster=instruqt-cluster \
  --namespace=newrelic \
  --set newrelic-infrastructure.privileged=true \
