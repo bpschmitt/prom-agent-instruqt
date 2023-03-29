@@ -36,8 +36,8 @@ config:
 
   kubernetes:
     integrations_filter:
-      enabled: true
       # INSTRUQT: Challenge 2
+      enabled: true
       # -- source_labels used to fetch label values in the relabel config added by the integration filters configuration
       source_labels: ["app.kubernetes.io/name", "app.newrelic.io/name", "k8s-app"]
       # -- app_values used to create the regex used in the relabel config added by the integration filters configuration.
@@ -56,8 +56,8 @@ config:
     # - `prometheus.io/param_<param-name>`: To include additional parameters in the scrape URL.
     jobs:
     # INSTRUQT: Challenge 2
-    # 'default' scrapes all targets having 'prometheus.io/scrape: true'.
-    # Out of the box, since kubernetes.integrations_filter.enabled=true then only targets selected by the integration filters are considered.
+    # 'default' scrapes all targets having 'prometheus.io/scrape: true'
+    # out of the box, since kubernetes.integrations_filter.enabled=true then only targets selected by the integration filters are considered.
     - job_name_prefix: default
       target_discovery:
         pod: true
